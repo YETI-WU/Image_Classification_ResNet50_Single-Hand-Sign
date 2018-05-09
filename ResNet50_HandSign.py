@@ -245,7 +245,7 @@ plt.plot(train_history.history['acc'])
 plt.title('model accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
-plt.legend(['train_history_acc'], loc='upper left')
+plt.legend(['train_history_acc'], loc='lower right')
 plt.show()
 
 

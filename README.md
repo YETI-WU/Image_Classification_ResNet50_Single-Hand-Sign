@@ -22,9 +22,10 @@ Use Deep Neural Network model "ResNet50" to train the data.
 For ResNet50 coding, please see my previous repository.  
 https://github.com/YETI-WU/Residual-Network  
   
+![](images/identity_convolutional_blocks_ResNets50_Architecture.png)  
   
 #### Build model graph  
-""" image shape 64 x 64 x 3 ; Single-Hand-Sign 6 classes """
+""" image shape 64 x 64 x 3 ; Single-Hand-Sign 6 classes """  
 model = ResNet50(input_shape = (64, 64, 3), classes = 6)  
   
 #### Compile model  
@@ -33,23 +34,24 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 #### Train model 
 train_history = model.fit(X_train, Y_train, epochs = 50, batch_size = 32)  
 print(train_history.history.keys())  
-
+  
+  
 ## Plot Loss and Accuracy 
-![](images/)  
-#### Plot history of loss
-plt.plot(train_history.history['loss'])
-plt.title('model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train_history_loss'], loc='upper right')
-plt.show()
+![](images/Plot_LOSS_ACC.png)  
+#### Plot history of LOSS  
+plt.plot(train_history.history['loss'])  
+plt.title('model loss')  
+plt.ylabel('loss')  
+plt.xlabel('epoch')  
+plt.legend(['train_history_loss'], loc='upper right')  
+plt.show()  
 
-#### plot history of acc
+#### Plot history of ACC
 plt.plot(train_history.history['acc'])  
 plt.title('model accuracy')  
 plt.ylabel('accuracy')  
 plt.xlabel('epoch')  
-plt.legend(['train_history_acc'], loc='upper left')  
+plt.legend(['train_history_acc'], loc='lower right')  
 plt.show()  
 
   
@@ -58,7 +60,11 @@ plt.show()
 scores = model.evaluate(X_test, Y_test)  
 print ("Loss = " + str(scores[0]))  
 print ("Test Accuracy = " + str(scores[1]))  
-
+--------------------------------------------------  
+120/120 [==============================] - 5s     
+Loss = 0.265715452035  
+Test Accuracy = 0.91666667064  
+--------------------------------------------------  
   
 ## Model Save & Load
 #### Save Model for Future Training  

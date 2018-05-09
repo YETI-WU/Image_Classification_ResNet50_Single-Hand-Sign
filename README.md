@@ -23,9 +23,20 @@ For ResNet50 coding, please see my previous repository.
 https://github.com/YETI-WU/Residual-Network  
   
   
+#### Build model graph  
+""" image shape 64 x 64 x 3 ; Single-Hand-Sign 6 classes """
+model = ResNet50(input_shape = (64, 64, 3), classes = 6)  
+  
+#### Compile model  
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])  
+  
+#### Train model 
+train_history = model.fit(X_train, Y_train, epochs = 50, batch_size = 32)  
+print(train_history.history.keys())  
+
 ## Plot Loss and Accuracy 
 ![](images/)  
-### Plot history of loss
+#### Plot history of loss
 plt.plot(train_history.history['loss'])
 plt.title('model loss')
 plt.ylabel('loss')
@@ -33,7 +44,7 @@ plt.xlabel('epoch')
 plt.legend(['train_history_loss'], loc='upper right')
 plt.show()
 
-### plot history of acc
+#### plot history of acc
 plt.plot(train_history.history['acc'])  
 plt.title('model accuracy')  
 plt.ylabel('accuracy')  
@@ -48,10 +59,12 @@ scores = model.evaluate(X_test, Y_test)
 print ("Loss = " + str(scores[0]))  
 print ("Test Accuracy = " + str(scores[1]))  
 
-## Save Model for Future Training  
+  
+## Model Save & Load
+#### Save Model for Future Training  
 model.save('ResidualNet50_HE.h5')  
-
-## Load Model from Previous Trained Model, and train again  
+  
+#### Load Model from Previous Trained Model, and train again  
 model = load_model('ResidualNet50.h5')  
 model.fit(X_train, Y_train, epochs = 1, batch_size = 32)  
   

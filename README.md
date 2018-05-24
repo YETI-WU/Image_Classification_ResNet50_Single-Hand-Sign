@@ -1,4 +1,4 @@
-# Single-Hand-Sign_Image_Classification_with_ResNet50  
+# Image_Classification_ResNet50_Single-Hand-Sign
 Image Classification of Single-Hand-Sign  
 ResNet50_HandSign.py  
   

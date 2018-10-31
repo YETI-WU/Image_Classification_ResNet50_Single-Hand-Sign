@@ -43,6 +43,7 @@ def load_dataset():
     return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
 
 
+# Convert Number Label to One-Hot Label, C is total Classes Number
 def convert_to_one_hot(Y, C):
     Y = np.eye(C)[Y.reshape(-1)] # reshape(-1) to make an array. np will look at the length of the array and remaining dimensions
     return Y
@@ -60,7 +61,7 @@ Y_train = convert_to_one_hot(Y_train_orig, 6) # matrix [m , 6] 6 column
 Y_test = convert_to_one_hot(Y_test_orig, 6)
 
 
-# Demon an image in train data
+# Demonstrate an image in train data
 index = np.random.randint(len(Y_train_orig[0])) # pick a random integer from max/length number of train data
 print("index = " + str(index) + " ; " + "class = " + str(Y_train_orig[0,index]))
 plt.imshow(X_train_orig[index])
